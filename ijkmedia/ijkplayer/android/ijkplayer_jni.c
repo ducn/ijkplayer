@@ -464,6 +464,20 @@ LABEL_RETURN:
     ijkmp_dec_ref_p(&mp);
 }
 
+
+static void
+IjkMediaPlayer_setPlayBackSpeed(JNIEnv *env, jobject thiz, jfloat speed)
+{
+    MPTRACE("%s\n", __func__);
+    IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
+    JNI_CHECK_GOTO(mp, env, NULL, "mpjni: setPlayBackSpeed: null mp", LABEL_RETURN);
+
+    ijkmp_set_playback_rate(mp, speed);
+
+    LABEL_RETURN:
+    ijkmp_dec_ref_p(&mp);
+}
+
 static jint
 IjkMediaPlayer_getAudioSessionId(JNIEnv *env, jobject thiz)
 {
@@ -984,6 +998,7 @@ static JNINativeMethod g_methods[] = {
     { "_release",               "()V",      (void *) IjkMediaPlayer_release },
     { "_reset",                 "()V",      (void *) IjkMediaPlayer_reset },
     { "setVolume",              "(FF)V",    (void *) IjkMediaPlayer_setVolume },
+    { "setPlayBackSpeed",       "(F)V",    (void *) IjkMediaPlayer_setPlayBackSpeed },
     { "getAudioSessionId",      "()I",      (void *) IjkMediaPlayer_getAudioSessionId },
     { "native_init",            "()V",      (void *) IjkMediaPlayer_native_init },
     { "native_setup",           "(Ljava/lang/Object;)V", (void *) IjkMediaPlayer_native_setup },

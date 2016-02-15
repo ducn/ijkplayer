@@ -44,6 +44,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import tv.danmaku.ijk.media.exo.IjkExoMediaPlayer;
+import tv.danmaku.ijk.media.player.AbstractMediaPlayer;
 import tv.danmaku.ijk.media.player.AndroidMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -314,6 +315,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             bindSurfaceHolder(mMediaPlayer, mSurfaceHolder);
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setScreenOnWhilePlaying(true);
+            ((AbstractMediaPlayer)mMediaPlayer).setPlayBackSpeed(0.6f);
             mMediaPlayer.prepareAsync();
             if (mHudViewHolder != null)
                 mHudViewHolder.setMediaPlayer(mMediaPlayer);

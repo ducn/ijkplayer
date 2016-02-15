@@ -58,6 +58,8 @@ public abstract class AbstractMediaPlayer implements IMediaPlayer {
         mOnInfoListener = listener;
     }
 
+    public void setPlayBackSpeed(float speed) {}
+
     public void resetListeners() {
         mOnPreparedListener = null;
         mOnBufferingUpdateListener = null;
